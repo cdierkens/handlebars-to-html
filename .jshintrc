@@ -1,0 +1,62 @@
+{
+    /*
+     * ENVIRONMENTS
+     * =================
+     */
+
+    // This option defines globals exposed by modern browsers: all the way from good old document and navigator to the HTML5 FileReader and other new developments in the browser world.
+    "browser": true,
+
+    // This option defines globals exposed by the "BDD" and "TDD" UIs of the Mocha unit testing framework.
+    "mocha": true,
+
+    // Define globals exposed by Node.js.
+    "node": true,
+
+    /*
+     * ENFORCING OPTIONS
+     * =================
+     */
+
+    // This option requires you to always put curly braces around blocks in loops and conditionals.
+    "curly": true,
+
+    // This options prohibits the use of == and != in favor of === and !==.
+    "eqeqeq": true,
+
+    // This option is used to specify the ECMAScript version to which the code must adhere.
+    "esversion": 6,
+
+    // This option requires all for in loops to filter object's items.
+    "forin": true,
+
+    // This options prohibits overwriting prototypes of native objects such as Array, Date and so on.
+    "freeze": true,
+
+    // This option prohibits the use of a variable before it was defined.
+    "latedef": true,
+
+    // This option prohibits the use of arguments.caller and arguments.callee.
+    "noarg": true,
+
+    // This option warns about "non-breaking whitespace" characters.
+    "nonbsp": true,
+
+    // This option prohibits the use of constructor functions for side-effects.
+    "nonew": true,
+
+    // This option prohibits the use of explicitly undeclared variables.
+    "undef": true,
+
+    // This option warns when you define and never use your variables.
+    "unused": true,
+
+
+    /*
+     * RELAXING OPTIONS
+     * =================
+     */
+
+    // Suppress warnings about == null comparisons.
+    "eqnull": true
+}

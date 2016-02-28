@@ -1,0 +1,160 @@
+{
+    "excludeFiles": ["node_modules", "dist"],
+
+    // Disallows identifiers that start or end in _.
+    "disallowDanglingUnderscores": true,
+
+    // Disallows empty blocks (except for catch blocks).
+    "disallowEmptyBlocks": true,
+
+    // Disallows identical destructuring names for the key and value in favor of using shorthand destructuring.
+    "disallowIdenticalDestructuringNames": true,
+
+    // Requires lines to not contain both spaces and tabs consecutively, or spaces after tabs only for alignment if "smart".
+    "disallowMixedSpacesAndTabs": true,
+
+    // Disallows multiple blank lines in a row.
+    "disallowMultipleLineBreaks": true,
+
+    // Disallows multiple indentation characters (tabs or spaces) between identifiers, keywords, and any other token
+    "disallowMultipleSpaces": true,
+
+    // Disallows nested ternaries.
+    "disallowNestedTernaries": true,
+
+    // Disallows newline before opening curly brace of all block statements.
+    "disallowNewlineBeforeBlockStatements": true,
+
+    // Requires putting certain operators on the next line rather than on the current line before a line break.
+    "disallowOperatorBeforeLineBreak": ["."],
+
+    // Disallows blocks from beginning or ending with 2 newlines.
+    "disallowPaddingNewlinesInBlocks": true,
+
+    // Disallows an extra comma following the final element of an array or object literal.
+    "disallowTrailingComma": true,
+
+    // Disallows unused params in function expression and function declaration.
+    "disallowUnusedParams": true,
+
+    // Requires the variable to be the left hand operator when doing a boolean comparison.
+    "disallowYodaConditions": true,
+
+    // Enforces indentation of parameters in multiline functions.
+    "requireAlignedMultilineParams": true,
+
+    // Requires blocks to begin and end with a newline.
+    "requireBlocksOnNewline": true,
+
+    // Requires identifiers to be camelCased or UPPERCASE_WITH_UNDERSCORES.
+    "requireCamelCaseOrUpperCaseIdentifiers": true,
+
+    // Requires the first alphabetical character of a comment to be uppercase, unless it is part of a multi-line textblock.
+    "requireCapitalizedComments": true,
+
+    // Requires curly braces after statements.
+    "requireCurlyBraces": true,
+
+    // Require a $ before variable names that are jquery assignments.
+    "requireDollarBeforejQueryAssignment": true,
+
+    // Requires to return early in a function.
+    "requireEarlyReturn": true,
+
+    // Requires function declarations by disallowing assignment of functions expressions to variables.
+    "requireFunctionDeclarations": true,
+
+    // Requires placing line feed after assigning a variable.
+    "requireLineBreakAfterVariableAssignment": true,
+
+    // Requires placing line feed at file end.
+    "requireLineFeedAtFileEnd": true,
+
+    // Requires function names to match member and property names.
+    "requireMatchingFunctionName": true,
+
+    // Requires placing object keys on new line.
+    "requireObjectKeysOnNewLine": true,
+
+    // Requires operators to appear before line breaks and not after.
+    "requireOperatorBeforeLineBreak": true,
+
+    // Requires an extra blank newline after var declarations, as long as it is not the last expression in the current block.
+    "requirePaddingNewLineAfterVariableDeclaration": true,
+
+    // Requires newline after blocks.
+    "requirePaddingNewLinesAfterBlocks": true,
+
+    // Requires a blank line after 'use strict'; statements.
+    "requirePaddingNewLinesAfterUseStrict": true,
+
+    // Requires parentheses around immediately invoked function expressions.
+    "requireParenthesesAroundIIFE": true,
+
+    // Requires semicolon.
+    "requireSemicolons": true,
+
+    // Disallows sticking binary operators to the right.
+    "requireSpaceAfterBinaryOperators": true,
+
+    // Requires space after comma.
+    "requireSpaceAfterComma": true,
+
+    // Requires space after keyword.
+    "requireSpaceAfterKeywords": true,
+
+    // Requires that a line comment (//) be followed by a space.
+    "requireSpaceAfterLineComment": true,
+
+    // Requires space before binary operators.
+    "requireSpaceBeforeBinaryOperators": true,
+
+    // Requires space(s) before block statements (for loops, control structures).
+    "requireSpaceBeforeBlockStatements": true,
+
+    // Ensure there are spaces after argument separators in call expressions.
+    "requireSpaceBetweenArguments": true,
+
+    // Requires space before () or {} in anonymous function expressions.
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningRoundBrace": true,
+        "beforeOpeningCurlyBrace": true
+    },
+
+    // Requires space before and/or after ? or : in conditional expressions.
+    "requireSpacesInConditionalExpression": {
+        "afterTest": true,
+        "beforeConsequent": true,
+        "afterConsequent": true,
+        "beforeAlternate": true
+    },
+
+    // Requires spaces inbetween for statement.
+    "requireSpacesInForStatement": true,
+
+    // Requires space before () or {} in function expressions (both named and anonymous) and function declarations.
+    "requireSpacesInFunction": {
+        "beforeOpeningRoundBrace": true,
+        "beforeOpeningCurlyBrace": true
+    },
+
+    // Validates proper alignment of function parameters.
+    "validateAlignedFunctionParameters": true,
+
+    // This rule is for validating the positioning of line comments. Block comments are ignored.
+    "validateCommentPosition": {
+        "position": "above"
+    },
+
+    // Validates indentation for switch statements and block statements
+    "validateIndentation": 4,
+
+    // Validates the order in object keys.
+    "validateOrderInObjectKeys": "asc",
+
+    // Enable validation of separators between function parameters. Will ignore newlines.
+    "validateParameterSeparator": ", ",
+
+    // Requires all quote marks to be either the supplied value, or consistent if true.
+    "validateQuoteMarks": true
+}
