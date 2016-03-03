@@ -4,59 +4,63 @@ import Handlebars from "handlebars";
 import mkdirp from "mkdirp";
 import path from "path";
 
-function registerPartials (pattern) {
-    var files = glob.sync(pattern);
-
-    if (!files.length) {
-        throw new Error(`No partial files found for pattern ${pattern}`);
-    }
+function files (directory = process.cwd(), pattern = '**/*.hbs') {
+    var files = glob.sync(path.join(directory, pattern));
 
     if (process.env.debug) {
-        console.log("Partials", files);
+        console.log(`Files for ${pattern}`, files);
     }
 
-    files.forEach(file => {
-        // TODO: Does readFileSync exist in node 0.10/0.12?
-        var source = fs.readFileSync(file).toString(),
-            partialName = file.replace(path.extname(file), "");
+    return files;
+}
 
-        Handlebars.registerPartial(partialName, source);
+function isDirectory(directory) {
+    if (!fs.existsSync(directory) || !fs.statSync(directory).isDirectory()) {
+        return false;
+    }
+    return true;
+}
+
+function registerPartials (directory, pattern) {
+    if (!isDirectory(directory)) {
+        throw Error(`${directory} is not a directory`);
+    }
+
+    directory = path.normalize(`${directory}${path.sep}`);
+
+    files(directory, pattern).forEach(file => {
+        var source = fs.readFileSync(file).toString(),
+            name = file.replace(directory, "").replace(path.extname(file), "");
+
+        Handlebars.registerPartial(name, source);
 
         if (process.env.debug) {
-            console.log("Partial registered with name", partialName);
+            console.log("Partial registered with name", name);
         }
     });
 }
 
-function writeFiles (pattern) {
-    var files = glob.sync(pattern);
-
-    if (!files.length) {
-        throw new Error(`No template files found for pattern ${pattern}`);
+function writeTemplates (directory, pattern, outDirectory) {
+    if (!isDirectory(directory)) {
+        throw Error(`${directory} is not a directory`);
     }
 
-    if (process.env.debug) {
-        console.log("Templates", files);
-    }
+    directory = path.normalize(`${directory}${path.sep}`);
+    outDirectory = path.normalize(`${outDirectory}${path.sep}`);
 
-    files.forEach(file => {
+    files(directory, pattern).forEach(file => {
         var source = fs.readFileSync(file).toString(),
             template = Handlebars.compile(source),
-            distDirectory = path.dirname(file).replace("source" + path.sep + "pages", "dist"),
-            distPath = distDirectory + path.sep + path.basename(file, ".hbs") + ".html";
+            name = file.replace(directory, "").replace(path.extname(file), ".html"),
+            out = path.join(outDirectory, name);
 
-        mkdirp.sync(distDirectory);
-        fs.writeFileSync(distPath, template());
+        mkdirp.sync(path.dirname(out));
+        fs.writeFileSync(out, template());
 
         if (process.env.debug) {
-            console.log("Template written to", distPath);
+            console.log("Template written to", out);
         }
     });
 }
 
-const api = {
-    registerPartials,
-    writeFiles
-};
-
-export default api;
+export default { registerPartials, writeTemplates };

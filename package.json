@@ -13,6 +13,7 @@
     "lint:js-style": "jscs .",
     "prebuild": "mkdirp dist",
     "prepublish": "npm run check",
+    "pretest": "npm run build",
     "test": "mocha --compilers js:babel-register"
   },
   "pre-commit": "check",

@@ -4,23 +4,34 @@ import commander from "commander";
 import handlebarsToHtml from "./handlebars-to-html";
 import packageJson from "../package.json";
 
-commander
-  .version(packageJson.version)
-  .usage("-templates <pattern> -d <path>")
-  .description("Write handlebars templates to a directory as static html.")
-  .option("-d, --directory", "output directory")
-  .option("-H, --helpers", "path to JavaScript file containing helpers")
-  .option("-p, --partials [pattern]", "glob pattern to match partial files")
-  .option("-t, --templates <pattern>", "glob pattern to match template files")
-  .option("-v, --verbose", "output more information to console")
-  .parse(process.argv);
+var program = commander.command("handlebars-to-html");
 
-if (commander.verbose) {
+program.version(packageJson.version)
+    .usage("-t <path> -T <pattern> -p [path] -P [pattern] -d <directory>")
+    .description("Write handlebars templates to a directory as static html.")
+    .option("-d, --directory <path>", "output directory")
+    .option("-P, --partial-directory [path]", "directory to prepend to pattern")
+    .option("-p, --partial-pattern [pattern]", "glob pattern to match partial files")
+    .option("-T, --template-directory <path>", "directory to prepend to pattern")
+    .option("-t, --template-pattern <path>", "glob pattern to match template files in template path")
+    .option("-v, --verbose", "output more information to console")
+    .parse(process.argv);
+
+if (program.verbose) {
     process.env.debug = true;
 }
 
-if (commander.partials) {
-    handlebarsToHtml.registerPartials(commander.partials);
+if (program.partialDirectory && program.partialPattern) {
+    handlebarsToHtml.registerPartials(program.partialDirectory, program.partialPattern)
+} else if (program.partialDirectory && !program.partialPattern) {
+    console.error('  Supplied partial directory with no pattern');
+} else if (!program.partialDirectory && program.partialPattern) {
+    console.error('  Supplied partial patern with no directory');
 }
 
-handlebarsToHtml.writeFiles(commander.templates);
+if (program.templateDirectory && program.templatePattern && program.directory) {
+    handlebarsToHtml.writeTemplates(program.templateDirectory, program.templatePattern, program.directory);
+} else {
+    console.error('  Missing required argument');
+    program.help();
+}

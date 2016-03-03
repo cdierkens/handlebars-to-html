@@ -1,5 +1,5 @@
 import "should";
-import handlebarsToHtml from "../src/handlebars-to-html";
+import handlebarsToHtml from "../dist/handlebars-to-html";
 
 describe("Handlebars to html", () => {
     describe("Register partials", () => {
