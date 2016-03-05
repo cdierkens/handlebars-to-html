@@ -5,7 +5,8 @@
   "main": "dist/handlebars-to-html.js",
   "bin": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "npm-run-all --parallel build:*",
+    "build:scripts": "babel src -d dist",
     "check": "npm-run-all clean --parallel build test lint",
     "clean": "rimraf dist",
     "lint": "npm-run-all --parallel lint:*",
