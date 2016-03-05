@@ -4,9 +4,6 @@
      * =================
      */
 
-    // This option defines globals exposed by modern browsers: all the way from good old document and navigator to the HTML5 FileReader and other new developments in the browser world.
-    "browser": true,
-
     // This option defines globals exposed by the "BDD" and "TDD" UIs of the Mocha unit testing framework.
     "mocha": true,
 
