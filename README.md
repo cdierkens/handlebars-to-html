@@ -16,9 +16,9 @@ cwd/src/views
 |__index.hbs
 ```
 
-**Note:** /templates should always contain an `index.hbs` file, given this project's config (see handlebars-to-html::writeFiles, lines 47-51).
+**Note:** `/templates` should always contain an `index.hbs` file, given this project's config (see `handlebars-to-html::writeFiles`, lines 47-51).
 
-#### Sample layout:
+### Sample layout:
 
 ```
 <!-- cwd/views/layouts/base -->
@@ -34,7 +34,7 @@ cwd/src/views
 </html>
 ```
 
-#### Sample index template:
+### Sample index template:
 
 ```
 <!-- cwd/views/templates/index.hbs -->
