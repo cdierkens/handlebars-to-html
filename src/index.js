@@ -2,6 +2,7 @@
 
 let commander = require("commander");
 let handlebarsToHtml = require("../build/handlebars-to-html");
+let packageJson = require("../package.json");
 
 let config = {
     partialsFolder: "src/views/partials/",
@@ -10,6 +11,7 @@ let config = {
 }
 
 commander
+  .version(packageJson.version)
   .usage("-templates <pattern> -d <path>")
   .description("Write handlebars templates to a directory as static html.")
   .option("-d, --directory", "output directory")
