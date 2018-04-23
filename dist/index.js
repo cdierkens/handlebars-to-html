@@ -6,8 +6,8 @@ var handlebarsToHtml = require("../build/handlebars-to-html");
 var packageJson = require("../package.json");
 
 var config = {
-    partialsFolder: "src/views/partials/",
     layoutsFolder: "src/views/layouts/",
+    partialsFolder: "src/views/partials/",
     templatesFolder: "src/views/templates/"
 };
 
