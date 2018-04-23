@@ -6,21 +6,17 @@ Generate static html files from handlebars templates.
 
 ### Sample folder structure:
 
-> - cwd/src/views
+```
+cwd/src/views
+|_`layouts`
+|_`partials`
+|__`blog`
+|___`post.hbs`
+|_`templates`
+|__`index.hbs`
+```
 
-> |_`layouts`
-
-> |_`partials`
-
-> |__`blog`
-
-> |___`post.hbs`
-
-> |_`templates`
-
-> |__`index.hbs`
-
-**Note:** /templates should always contain an index.hbs file.
+**Note:** /templates should always contain an `index.hbs` file, given this project's config (see handlebars-to-html::writeFiles, lines 47-51).
 
 #### Sample layout:
 
