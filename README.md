@@ -9,6 +9,7 @@ Generate static html files from handlebars templates.
 ```
 cwd/src/views
 |_layouts
+|__base.hbs
 |_partials
 |__blog
 |___post.hbs
