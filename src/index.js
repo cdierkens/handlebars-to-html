@@ -9,8 +9,6 @@ let config = {
     templatesFolder: "src/views/templates/"
 }
 
-// Example to run in command line:
-// node build/build.js -d cwd -p "src/views/partials/**/*.hbs" -l "src/views/layouts/**/*.hbs" -t "src/views/templates/**/*.hbs" -v
 commander
   .usage("-templates <pattern> -d <path>")
   .description("Write handlebars templates to a directory as static html.")

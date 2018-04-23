@@ -45,6 +45,6 @@ Generate static html files from handlebars templates.
 
 Run:
 
-`node build/build.js -d cwd -p "src/views/partials/**/*.hbs" -l "src/views/layouts/**/*.hbs" -t "src/views/templates/**/*.hbs" -v`
+`node index.js -d cwd -p "src/views/partials/**/*.hbs" -l "src/views/layouts/**/*.hbs" -t "src/views/templates/**/*.hbs" -v`
 
 from the command line, given the default parameters in `index.js`. This outputs `.html` files to the `cwd` in the same folder structure as your compiled `src/views/templates` folder.
