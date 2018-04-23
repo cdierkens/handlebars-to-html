@@ -21,7 +21,7 @@ cwd/src/views
 ### Sample layout:
 
 ```
-<!-- cwd/views/layouts/base -->
+<!-- cwd/src/views/layouts/base -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns#">
   <head>
@@ -37,7 +37,7 @@ cwd/src/views
 ### Sample index template:
 
 ```
-<!-- cwd/views/templates/index.hbs -->
+<!-- cwd/src/views/templates/index.hbs -->
 {{#> base}}
   {{> blog/post}}
 {{/base}}
