@@ -1,8 +1,14 @@
 #!/usr/bin/env node
 
-import commander from "commander";
-import handlebarsToHtml from "./handlebars-to-html";
-import packageJson from "../package.json";
+let commander = require("commander");
+let handlebarsToHtml = require("../build/handlebars-to-html");
+let packageJson = require("../package.json");
+
+let config = {
+    layoutsFolder: "src/views/layouts/",
+    partialsFolder: "src/views/partials/",
+    templatesFolder: "src/views/templates/"
+};
 
 commander
   .version(packageJson.version)
@@ -11,6 +17,7 @@ commander
   .option("-d, --directory", "output directory")
   .option("-H, --helpers", "path to JavaScript file containing helpers")
   .option("-p, --partials [pattern]", "glob pattern to match partial files")
+  .option("-l, --layouts [pattern]", "glob pattern to match layout files")
   .option("-t, --templates <pattern>", "glob pattern to match template files")
   .option("-v, --verbose", "output more information to console")
   .parse(process.argv);
@@ -20,7 +27,11 @@ if (commander.verbose) {
 }
 
 if (commander.partials) {
-    handlebarsToHtml.registerPartials(commander.partials);
+    handlebarsToHtml.registerPartials(commander.partials, config.partialsFolder);
 }
 
-handlebarsToHtml.writeFiles(commander.templates);
+if (commander.layouts) {
+    handlebarsToHtml.registerPartials(commander.layouts, config.layoutsFolder);
+}
+
+handlebarsToHtml.writeFiles(commander.templates, config.templatesFolder);
