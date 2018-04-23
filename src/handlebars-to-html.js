@@ -1,10 +1,10 @@
-import fs from "fs";
-import glob from "glob";
-import Handlebars from "handlebars";
-import mkdirp from "mkdirp";
-import path from "path";
+let fs = require("fs");
+let glob = require("glob");
+let Handlebars = require("handlebars");
+let mkdirp = require("mkdirp");
+let path = require("path");
 
-function registerPartials (pattern) {
+function registerPartials (pattern, folderPath) {
     var files = glob.sync(pattern);
 
     if (!files.length) {
@@ -12,23 +12,22 @@ function registerPartials (pattern) {
     }
 
     if (process.env.debug) {
-        console.log("Partials", files);
+        console.log("Files", files);
     }
 
     files.forEach(file => {
-        // TODO: Does readFileSync exist in node 0.10/0.12?
         var source = fs.readFileSync(file).toString(),
-            partialName = file.replace(path.extname(file), "");
+            fileName = file.replace(folderPath, "").replace(path.extname(file), "");
 
-        Handlebars.registerPartial(partialName, source);
+        Handlebars.registerPartial(fileName, source);
 
         if (process.env.debug) {
-            console.log("Partial registered with name", partialName);
+            console.log("File registered with name", fileName);
         }
     });
 }
 
-function writeFiles (pattern) {
+function writeFiles (pattern, folderPath) {
     var files = glob.sync(pattern);
 
     if (!files.length) {
@@ -42,8 +41,14 @@ function writeFiles (pattern) {
     files.forEach(file => {
         var source = fs.readFileSync(file).toString(),
             template = Handlebars.compile(source),
-            distDirectory = path.dirname(file).replace("source" + path.sep + "pages", "dist"),
+            distDirectory = path.dirname(file).replace(folderPath, ""),
+            distPath;
+
+        if (distDirectory === folderPath.slice(0, folderPath.length - 1)) {
+            distPath = path.basename(file, ".hbs") + ".html";
+        } else {
             distPath = distDirectory + path.sep + path.basename(file, ".hbs") + ".html";
+        }
 
         mkdirp.sync(distDirectory);
         fs.writeFileSync(distPath, template());
@@ -59,4 +64,4 @@ const api = {
     writeFiles
 };
 
-export default api;
+module.exports = api;
