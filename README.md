@@ -8,12 +8,12 @@ Generate static html files from handlebars templates.
 
 ```
 cwd/src/views
-|_`layouts`
-|_`partials`
-|__`blog`
-|___`post.hbs`
-|_`templates`
-|__`index.hbs`
+|_layouts
+|_partials
+|__blog
+|___post.hbs
+|_templates
+|__index.hbs
 ```
 
 **Note:** /templates should always contain an `index.hbs` file, given this project's config (see handlebars-to-html::writeFiles, lines 47-51).
