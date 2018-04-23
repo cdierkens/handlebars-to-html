@@ -26,8 +26,9 @@ cwd/src/views
 <html xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns#">
   <head>
     <title>Title</title>
+    <link type="text/css" href="/styles/main.css" rel="stylesheet">
   </head>
-  <link type="text/css" href="/styles/main.css" rel="stylesheet">
+
   <body>
   {{> @partial-block }}
   </body>
