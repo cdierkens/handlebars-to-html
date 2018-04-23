@@ -8,7 +8,7 @@ let config = {
     partialsFolder: "src/views/partials/",
     layoutsFolder: "src/views/layouts/",
     templatesFolder: "src/views/templates/"
-}
+};
 
 commander
   .version(packageJson.version)
